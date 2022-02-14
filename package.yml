@@ -9,3 +9,10 @@
       apt:
         name: "*"
         state: latest
+      when: ansible_distribution == "ubuntu"
+    - name: Upgrade all packages
+      yum:
+        name: "*"
+        state: latest
+      when: ansible_distribution == "Redhat"
+
