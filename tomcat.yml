@@ -1,0 +1,26 @@
+---
+- name: install tomcat server
+  hosts: localhost
+  become: true
+  
+  tasks:
+  - name: Install OpenJDK
+    apt:
+      name: openjdk-11-jre-headless
+  - name: Install galternatives
+    apt:
+      name: galternatives
+
+  - name: download tomcat server packages
+    get_url:
+      url: https://dlcdn.apache.org/tomcat/tomcat-10/v10.0.21/bin/apache-tomcat-10.0.21.tar.gz
+      dest: /usr/local
+
+  - name: extract tomcat packages
+    unarchive:
+      src: /usr/local/apache-tomcat-10.0.21.tar.gz
+      dest: :
+      remote_src: yes
+
+  - name: start tomcat services
+    shell: nohup /usr/local/apache-tomcat-10.0.21/bin/startup.sh
