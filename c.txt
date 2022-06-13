@@ -1,2 +1,4 @@
 Hi this is subbu branch file
+<<<<<<< HEAD
 seems like this branch was merged
+=======
